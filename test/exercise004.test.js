@@ -6,7 +6,7 @@ const {
   getCities,
   getSquareRoots,
   findSentencesContaining,
-  getLongestSides
+  getLongestSides,
 } = require("../challenges/exercise004");
 
 describe("findSmallNums", () => {
@@ -24,7 +24,7 @@ describe("findNamesBeginningWith", () => {
     expect(findNamesBeginningWith(names, "S")).toEqual([
       "Sally",
       "Susan",
-      "Sam"
+      "Sam",
     ]);
     expect(findNamesBeginningWith(names, "D")).toEqual(["Dave"]);
     expect(findNamesBeginningWith(names, "F")).toEqual([]);
@@ -39,7 +39,7 @@ describe("findVerbs", () => {
       "mouse",
       "to sneak",
       "to squeak",
-      "cheesemonger"
+      "cheesemonger",
     ];
     expect(findVerbs(words)).toEqual(["to eat", "to sneak", "to squeak"]);
     expect(findVerbs(["bottle", "fish", "grain"])).toEqual([]);
@@ -52,7 +52,7 @@ describe("findVerbs", () => {
       "monitor",
       "to sneak",
       "to squeak",
-      "cheesemonger"
+      "cheesemonger",
     ];
     expect(findVerbs(words)).toEqual(["to eat", "to sneak", "to squeak"]);
   });
@@ -75,37 +75,37 @@ describe("getCities", () => {
         data: {
           city: {
             id: 1,
-            displayName: "MCR"
-          }
-        }
+            displayName: "MCR",
+          },
+        },
       },
       {
         id: 44,
         data: {
           city: {
             id: 4,
-            displayName: "LVP"
-          }
-        }
+            displayName: "LVP",
+          },
+        },
       },
       {
         id: 5,
         data: {
           city: {
             id: 4,
-            displayName: "LVP"
-          }
-        }
+            displayName: "LVP",
+          },
+        },
       },
       {
         id: 2,
         data: {
           city: {
             id: 7,
-            displayName: "GLW"
-          }
-        }
-      }
+            displayName: "GLW",
+          },
+        },
+      },
     ];
     expect(getCities(users)).toEqual(["MCR", "LVP", "LVP", "GLW"]);
   });
@@ -129,14 +129,14 @@ describe("findSentencesContaining", () => {
     "If you plan to publish your package, the most important things in your package.json are the name and version fields as they will be required",
     "If you don’t plan to publish your package, the name and version fields are optional",
     "Put keywords in it. It's an array of strings. This helps people discover your package as it's listed in npm search",
-    "The bugs field should hold the url to your project’s issue tracker and / or the email address to which issues should be reported."
+    "The bugs field should hold the url to your project’s issue tracker and / or the email address to which issues should be reported.",
   ];
 
   test("returns only the sentences containing the specified string", () => {
     expect(
       findSentencesContaining(sentencesAboutPackageJson, "license")
     ).toEqual([
-      "You should specify a license for your package so that people know how they are permitted to use it"
+      "You should specify a license for your package so that people know how they are permitted to use it",
     ]);
 
     expect(
@@ -149,17 +149,29 @@ describe("findSentencesContaining", () => {
       findSentencesContaining(sentencesAboutPackageJson, "dependencies")
     ).toEqual([
       "Dependencies are specified in a simple object that maps a package name to a version range",
-      "It's best to map these additional items such as a test framework, which is not needed for running your project, in a devDependencies object"
+      "It's best to map these additional items such as a test framework, which is not needed for running your project, in a devDependencies object",
     ]);
   });
 });
 
 describe("getLongestSides", () => {
   test("returns the longest side of each set of triangle data", () => {
-    const data = [[6, 7, 10], [9, 3, 6], [6, 3, 5], [6, 13, 12], [7, 12, 8]];
+    const data = [
+      [6, 7, 10],
+      [9, 3, 6],
+      [6, 3, 5],
+      [6, 13, 12],
+      [7, 12, 8],
+    ];
     expect(getLongestSides(data)).toEqual([10, 9, 6, 13, 12]);
 
-    const data2 = [[6, 7, 7], [9, 3, 9], [6, 3, 5], [6, 13, 12], [7, 12, 8]];
+    const data2 = [
+      [6, 7, 7],
+      [9, 3, 9],
+      [6, 3, 5],
+      [6, 13, 12],
+      [7, 12, 8],
+    ];
     expect(getLongestSides(data2)).toEqual([7, 9, 6, 13, 12]);
   });
 });
