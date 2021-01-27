@@ -7,19 +7,12 @@ function getSquares(nums) {
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
   // Your code here!
-  let camelString;
-  if (words.length < 2) {
-    return words.toString();
-  } else {
-    var removedFirstElementArray = words.slice(1, 2);
-
-    for (let i = 0; i < removedFirstElementArray.length; i++) {
-      camelString =
-        removedFirstElementArray[i].toUpperCase() +
-        removedFirstElementArray[i].substring(1);
-    }
-    return `${words[0]}${camelString}`;
+  let camelCase = words[0]; //keeps first word value as is
+  for (var i = 1, len = words.length; i < len; i++) {
+    var capitalized = words[i].substr(0, 1).toUpperCase() + words[i].slice(1);
+    camelCase += capitalized;
   }
+  return camelCase;
 }
 
 function getTotalSubjects(people) {
