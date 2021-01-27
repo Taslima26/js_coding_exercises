@@ -49,11 +49,19 @@ function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
   // Your code here
+  let sentenceContainingStr = sentences.filter((sentence) =>
+    sentence.toLowerCase().includes(str.toLowerCase())
+  );
+  return sentenceContainingStr;
 }
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
   // Your code here
+  let maxmumInRow = triangles.map(function (row) {
+    return Math.max.apply(Math, row);
+  });
+  return [...maxmumInRow];
 }
 
 module.exports = {
