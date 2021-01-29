@@ -2,6 +2,7 @@ const {
   sumMultiples,
   isValidDNA,
   getComplementaryDNA,
+  isItPrime,
   areWeCovered,
 } = require("../challenges/exercise006");
 
@@ -66,6 +67,25 @@ describe("getComplementaryDNA", () => {
   test("returns true if string only contains valid characters which is C, G,T ,A", () => {
     const result = getComplementaryDNA("CGTACGTA");
     const expected = "GCATGCAT";
+    expect(result).toBe(expected);
+  });
+});
+
+describe("isItPrime", () => {
+  test("It throws an error when nothing is passed to function", () => {
+    expect(() => {
+      isItPrime();
+    }).toThrow("n is required");
+  });
+
+  test("returns true if number is prime number", () => {
+    const result = isItPrime(5);
+    const expected = true;
+    expect(result).toBe(expected);
+  });
+  test("returns false if number is not prime number", () => {
+    const result = isItPrime(6);
+    const expected = false;
     expect(result).toBe(expected);
   });
 });
