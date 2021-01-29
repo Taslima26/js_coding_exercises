@@ -6,6 +6,7 @@
  */
 const sumMultiples = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
+  if (!Array.isArray(arr)) throw new Error("parameter must be an array ");
   let arrayOfMultiple = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] % 3 === 0 || arr[i] % 5 === 0) {
@@ -16,12 +17,15 @@ const sumMultiples = (arr) => {
 };
 
 /**
- * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
+ * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string.
+ *  A valid DNA string may contain characters C, G, T or A only.
  * @param {String} str
  * @returns {Boolean}
  */
 const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+  let dnaArray = str.split(" ");
+  console.log(dnaArray);
 };
 
 /**
@@ -73,6 +77,17 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  let numberOfDays = 0;
+  staff.forEach((data) => {
+    data.forEach((element) => {
+      element.rota.map((rotaDay) => {
+        if (rotaDay === day) {
+          numberOfDays++;
+        }
+      });
+    });
+  });
+  return numberOfDays >= 3 ? true : false;
 };
 
 module.exports = {

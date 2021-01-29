@@ -1,6 +1,15 @@
-const { sumMultiples } = require("../challenges/exercise006");
+const { sumMultiples, areWeCovered } = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
+  test("It throws an error when nothing is passed to function", () => {
+    expect(() => {
+      sumMultiples();
+    }).toThrow("arr is required");
+
+    expect(() => {
+      sumMultiples("array");
+    }).toThrow("parameter must be an array");
+  });
   test("returns the sum of numbers which are multiple of 3 and 5", () => {
     const result = sumMultiples([1, 3, 5]);
     const expected = 8;
@@ -15,5 +24,33 @@ describe("sumMultiples", () => {
     const result = sumMultiples([1, 7, 2, 4]);
     const expected = 0;
     expect(result).toBe(expected);
+  });
+});
+
+describe("areWeCovered", () => {
+  test("It returns false if there are no staff at all", () => {
+    expect(areWeCovered([], "Sunday")).toBe(false);
+    expect(areWeCovered([], "Monday")).toBe(false);
+    expect(areWeCovered([], "Tuesday")).toBe(false);
+    expect(areWeCovered([], "Wednesday")).toBe(false);
+    expect(areWeCovered([], "Thursday")).toBe(false);
+    expect(areWeCovered([], "Friday")).toBe(false);
+    expect(areWeCovered([], "Saturday")).toBe(false);
+  });
+
+  test("It returns false if there is three people available to work on particular day", () => {
+    const staff = [
+      { name: "taslima", rota: ["Monday", "Tuesday"] },
+      { name: "ayasha", rota: ["Monday", "Tuesday"] },
+    ];
+    expect(areWeCovered([staff], "Monday")).toBe(false);
+  });
+  test("It returns true if there is three people available to work on particular day", () => {
+    const staff = [
+      { name: "taslima", rota: ["Monday", "Tuesday"] },
+      { name: "ayasha", rota: ["Monday", "Tuesday"] },
+      { name: "khadijah", rota: ["Monday", "Thursday"] },
+    ];
+    expect(areWeCovered([staff], "Monday")).toBe(true);
   });
 });
