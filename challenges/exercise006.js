@@ -24,8 +24,14 @@ const sumMultiples = (arr) => {
  */
 const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
-  let dnaArray = str.split(" ");
-  console.log(dnaArray);
+  let dnaCharecters = ["C", "G", "T", "A"];
+  let result = false;
+  let dnaArray = str.split("");
+  dnaArray.map((char) => {
+    result = dnaCharecters.includes(char) ? true : false;
+  });
+
+  return result;
 };
 
 /**

@@ -1,4 +1,8 @@
-const { sumMultiples, areWeCovered } = require("../challenges/exercise006");
+const {
+  sumMultiples,
+  isValidDNA,
+  areWeCovered,
+} = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
   test("It throws an error when nothing is passed to function", () => {
@@ -23,6 +27,25 @@ describe("sumMultiples", () => {
   test("should returns o if there is no multiples of 3 or 5", () => {
     const result = sumMultiples([1, 7, 2, 4]);
     const expected = 0;
+    expect(result).toBe(expected);
+  });
+});
+
+describe("isValidDNA", () => {
+  test("It throws an error when nothing is passed to function", () => {
+    expect(() => {
+      isValidDNA();
+    }).toThrow("str is required");
+  });
+
+  test("returns false if string only contains valid characters which is C, G,T ,A", () => {
+    const result = isValidDNA("HHHHHHH");
+    const expected = false;
+    expect(result).toBe(expected);
+  });
+  test("returns true if string only contains valid characters which is C, G,T ,A", () => {
+    const result = isValidDNA("CGTACGTA");
+    const expected = true;
     expect(result).toBe(expected);
   });
 });
