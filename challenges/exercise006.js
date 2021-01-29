@@ -41,6 +41,25 @@ const isValidDNA = (str) => {
  */
 const getComplementaryDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+  let comlementryDNA = "";
+  let dnaArray = str.split("");
+  dnaArray.map((char) => {
+    switch (char) {
+      case "A":
+        comlementryDNA += "T";
+        break;
+      case "T":
+        comlementryDNA += "A";
+        break;
+      case "C":
+        comlementryDNA += "G";
+        break;
+      case "G":
+        comlementryDNA += "C";
+        break;
+    }
+  });
+  return comlementryDNA;
 };
 
 /**

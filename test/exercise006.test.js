@@ -1,6 +1,7 @@
 const {
   sumMultiples,
   isValidDNA,
+  getComplementaryDNA,
   areWeCovered,
 } = require("../challenges/exercise006");
 
@@ -46,6 +47,25 @@ describe("isValidDNA", () => {
   test("returns true if string only contains valid characters which is C, G,T ,A", () => {
     const result = isValidDNA("CGTACGTA");
     const expected = true;
+    expect(result).toBe(expected);
+  });
+});
+
+describe("getComplementaryDNA", () => {
+  test("It throws an error when nothing is passed to function", () => {
+    expect(() => {
+      getComplementaryDNA();
+    }).toThrow("str is required");
+  });
+
+  test("returns false if string only contains valid characters which is C, G,T ,A", () => {
+    const result = getComplementaryDNA("ATCG");
+    const expected = "TAGC";
+    expect(result).toBe(expected);
+  });
+  test("returns true if string only contains valid characters which is C, G,T ,A", () => {
+    const result = getComplementaryDNA("CGTACGTA");
+    const expected = "GCATGCAT";
     expect(result).toBe(expected);
   });
 });
