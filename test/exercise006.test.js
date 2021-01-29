@@ -3,6 +3,7 @@ const {
   isValidDNA,
   getComplementaryDNA,
   isItPrime,
+  createMatrix,
   areWeCovered,
 } = require("../challenges/exercise006");
 
@@ -87,6 +88,29 @@ describe("isItPrime", () => {
     const result = isItPrime(6);
     const expected = false;
     expect(result).toBe(expected);
+  });
+});
+
+describe("createMatrix", () => {
+  test("it throws an error when nothing is passed in function", () => {
+    expect(() => {
+      createMatrix();
+    }).toThrow("n and fill is  required");
+  });
+
+  test("create a matrix with values passed in", () => {
+    const result = createMatrix(1, "fill");
+    const expected = [["fill"]];
+    expect(result).toEqual(expected);
+  });
+  test("create a matrix with values passde in", () => {
+    const result = createMatrix(3, "foo");
+    const expected = [
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+    ];
+    expect(result).toEqual(expected);
   });
 });
 
