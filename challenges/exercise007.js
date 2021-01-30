@@ -62,6 +62,21 @@ const createRange = (start, end, step = 1) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  let result = [];
+  users.map((user) => {
+    let sum = 0;
+    user.screenTime.map((day) => {
+      if (day.date == date) {
+        let screenTimeValues = Object.values(day.usage);
+        sum = screenTimeValues.reduce((acc, curr) => acc + curr, 0);
+        return sum;
+      }
+    });
+    if (sum >= 100) {
+      result.push(user.username);
+    }
+  });
+  return result;
 };
 
 /**
