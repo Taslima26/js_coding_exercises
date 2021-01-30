@@ -2,6 +2,7 @@ const {
   sumDigits,
   createRange,
   getScreentimeAlertList,
+  hexToRGB,
 } = require("../challenges/exercise007");
 
 describe("sumDigits", () => {
@@ -115,5 +116,18 @@ describe("getScreentimeAlertList", () => {
     const result = getScreentimeAlertList(users, "2020-05-30");
     const expected = ["Jane_Trimmer"];
     expect(result).toEqual(expected);
+  });
+});
+
+describe("hexToRGB", () => {
+  test("It throws an error when nothing is passed to function", () => {
+    expect(() => {
+      hexToRGB();
+    }).toThrow("str is required");
+  });
+  test("returns the sum of numbers which is passed in", () => {
+    const result = hexToRGB("#FF1133");
+    const expected = "rgb(255,17,51)";
+    expect(result).toBe(expected);
   });
 });
