@@ -120,13 +120,13 @@ const findWinner = (board) => {
     [1, 5, 9],
     [3, 5, 7],
   ];
-  let boardMap = {};
+  let Layout = {};
   board.flat().forEach((element, index) => {
-    boardMap[index + 1] = element;
+    Layout[index + 1] = element;
   });
   matches.forEach((set) => {
-    let first = boardMap[set[0]];
-    if (boardMap[set[1]] === first && boardMap[set[2]] === first) {
+    let first = Layout[set[0]];
+    if (Layout[set[1]] === first && Layout[set[2]] === first) {
       result = first;
     }
   });
