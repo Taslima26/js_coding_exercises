@@ -92,12 +92,6 @@ describe("isItPrime", () => {
 });
 
 describe("createMatrix", () => {
-  test("it throws an error when nothing is passed in function", () => {
-    expect(() => {
-      createMatrix();
-    }).toThrow("n and fill is  required");
-  });
-
   test("create a matrix with values passed in", () => {
     const result = createMatrix(1, "fill");
     const expected = [["fill"]];

@@ -109,7 +109,28 @@ const hexToRGB = (hexStr) => {
  * @param {Array} board
  */
 const findWinner = (board) => {
-  if (board === undefined) throw new Error("board is required");
+  let result = null;
+  const matches = [
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 5, 9],
+    [3, 5, 7],
+  ];
+  let boardMap = {};
+  board.flat().forEach((element, index) => {
+    boardMap[index + 1] = element;
+  });
+  matches.forEach((set) => {
+    let first = boardMap[set[0]];
+    if (boardMap[set[1]] === first && boardMap[set[2]] === first) {
+      result = first;
+    }
+  });
+  return result;
 };
 
 module.exports = {

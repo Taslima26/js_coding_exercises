@@ -3,6 +3,7 @@ const {
   createRange,
   getScreentimeAlertList,
   hexToRGB,
+  findWinner,
 } = require("../challenges/exercise007");
 
 describe("sumDigits", () => {
@@ -96,17 +97,6 @@ const users = [
 ];
 
 describe("getScreentimeAlertList", () => {
-  // test("It throws an error when user  is not passed to the function", () => {
-  //   expect(() => {
-  //     getScreentimeAlertList(users);
-  //   }).toThrow("date is required");
-  // });
-  // test("It throws an error when date is not passed to the function", () => {
-  //   expect(() => {
-  //     getScreentimeAlertList("2019-05-04");
-  //   }).toThrow("users is required");
-  // });
-
   test("It returns name of the user from an array whose screen time is greated than 100 on provided date", () => {
     const result = getScreentimeAlertList(users, "2019-05-04");
     const expected = ["beth_1234"];
@@ -129,5 +119,35 @@ describe("hexToRGB", () => {
     const result = hexToRGB("#FF1133");
     const expected = "rgb(255,17,51)";
     expect(result).toBe(expected);
+  });
+});
+
+describe("findWinner", () => {
+  test("return null if no one wins", () => {
+    expect(
+      findWinner([
+        ["O", "X", "X"],
+        ["X", "O", "O"],
+        ["O", "O", "X"],
+      ])
+    ).toBe(null);
+  });
+  test("return X if player X has won", () => {
+    expect(
+      findWinner([
+        ["X", "O", null],
+        ["X", null, "O"],
+        ["X", null, "O"],
+      ])
+    ).toEqual("X");
+  });
+  test("return O if player O has won", () => {
+    expect(
+      findWinner([
+        ["O", "X", null],
+        ["O", null, "X"],
+        ["O", null, "X"],
+      ])
+    ).toEqual("O");
   });
 });
